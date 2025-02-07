@@ -6,8 +6,18 @@ import RunnerCard from './components/RunnerCard'
 import api from "../../api";
 import { Box, Button, Typography } from "@mui/material";
 import theme from "../../config/style/theme";
+import { useNavigate } from "react-router-dom";
+import config from "../../config";
 
 const MissionPage = () => {
+
+  const handleContribute = () => {
+    if (config.development) {
+      window.open('https://buy.stripe.com/test_eVa1830p14BVa9q6oo',  "_blank")
+    } else {
+      window.open('https://buy.stripe.com/8wM6pg0D52geaiI7ss',  "_blank")
+    }
+  }
 
   return (
     <div className="max-w-full max-h-full flex flex-col m-8 gap-4">
@@ -42,7 +52,7 @@ const MissionPage = () => {
           </Typography>
         </div>
     </Box>
-    <Button variant="contained" color="secondary" className="flex justify-center align-center items-center">
+    <Button onClick={handleContribute} variant="contained" color="secondary" className="flex justify-center align-center items-center">
       <Typography variant="h4">
         Click here to contribute
       </Typography>
