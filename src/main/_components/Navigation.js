@@ -3,100 +3,25 @@ import { AppBar, Box, Toolbar, IconButton, Button, Typography, Menu, MenuItem } 
 import navigationConfig from "../../config/navigation";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
-import theme from "../../config/theme";
+import theme from "../../config/style/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setLastLocation } from "../../config/userSlice";
 import api from "../../api";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const signedIn = useSelector(state=>state.userSlice.signedIn)
-  const [anchorRtNav, setAnchorRtNav] = useState(null);
-  const [rightMenuList, setRightMenuList] = useState([]);
-  const [leftMenuList, setLeftMenuList] = useState([]);
 
-  useEffect(()=>{ // tracking previous location before login/register/subscribe
-    dispatch(setLastLocation(location.pathname))
-  },[location])
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleOpenRtMenu = (event) => {
-    setAnchorRtNav(event.currentTarget);
+  const handleRunners = () => {
+    navigate('/runners')
   }
 
-  const handleCloseRtMenu = () => {
-    setAnchorRtNav(null);
+  const handleMission = () => {
+    navigate('/')
   }
 
-  const handleNavigate = (path) => {
-    console.log(path)
-    handleCloseRtMenu();
-    handleCloseNavMenu();
-    if (path) navigate(path);
-  };
-
-  useEffect(() => {
-    let leftMenu = [];
-    navigationConfig[0].children.map((page) => {
-      if (page.onMenu) {
-        leftMenu.push({
-          name: page.name,
-          onClick: (()=>{
-            handleNavigate(page.path)
-          })
-        })
-      }
-    })
-    setLeftMenuList(leftMenu);
-
-    let rightMenu = [];
-    if (signedIn) {
-      rightMenu.push(
-        {
-          name: "Account",
-          onClick: ()=>{handleNavigate('/account')}
-        },
-        {
-          name: "Logout",
-          onClick: (() => {
-            api.deleteRequest('/api/logout')
-            .then(result=>{
-              if (!result.error) {
-                dispatch(logout())
-                handleNavigate()
-              }
-            })
-          })
-        }
-      )
-    } else {
-      rightMenu.push(
-        {
-          name: "Log in",
-          onClick: () => {handleNavigate('/login')}
-        },
-        {
-          name: "Register",
-          onClick: () => {handleNavigate('/register')}
-        }
-      )
-    }
-    setRightMenuList(rightMenu)
-  }, [signedIn])
-
-  useEffect(()=>{
-    // load any information necessary for the nav bar here
-  },[])
+  const handleProgress = () => {
+    navigate('/money-raised')
+  }
 
   return (
     <AppBar position="static">
@@ -110,106 +35,50 @@ const NavigationBar = () => {
           color="primary"
         >
           <Button
-            size="large"
-            aria-label="account of current user"
+            size="medium"
+            aria-label="Donate"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={handleOpenNavMenu}
+            onClick={handleRunners}
             color="primary"
             variant="contained"
           >
             <Typography
               className="flex items-center w-20 justify-center"
-              sx={{ fontWeight: "bold" }}
             >
-              Menu
+              Runners
             </Typography>
           </Button>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorElNav}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            open={Boolean(anchorElNav)}
-            onClose={handleCloseNavMenu}
-            color="primary.contrastText"
-            sx={
-              { mt: "1px", "& .MuiMenu-paper": 
-                { backgroundColor: "black", }, 
-              }
-            }
-          >
-            {leftMenuList.map((page) => {
-              return (
-                <MenuItem key={page.name} onClick={page.onClick}>
-                  <Typography
-                    textAlign="center"
-                    color={'primary.contrastText'}
-                  >
-                    {page.name}
-                  </Typography>
-                </MenuItem>
-              );
-            })}
-          </Menu>
-          <img src="/images/1.png" className="h-10" onClick={()=>{handleNavigate('/')}} alt=''/>
           <Button
-            size="large"
-            aria-label="account of current user"
+            size="medium"
+            aria-label="Donate"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-            onClick={handleOpenRtMenu}
+            onClick={handleMission}
             color="primary"
             variant="contained"
           >
             <Typography
               className="flex items-center w-20 justify-center"
-              sx={{ fontWeight: "bold" }}
             >
-              Account
+              Mission
             </Typography>
           </Button>
-          <Menu
-          id="menu-appbar"
-          anchorEl={anchorRtNav}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "right",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "right",
-          }}
-          open={Boolean(anchorRtNav)}
-          onClose={handleCloseRtMenu}
-          sx={
-            { mt: "1px", "& .MuiMenu-paper": 
-              { backgroundColor: "black", }, 
-            }
-          }
-        >
-          {rightMenuList.map((page) => {
-            return (
-              <MenuItem key={page.name}>
-                <Typography
-                  textAlign="center"
-                  onClick={() => page.onClick()}
-                  color='primary.contrastText'
-                >
-                  {page.name}
-                </Typography>
-              </MenuItem>
-            );
-          })}
-        </Menu>
+          <Button
+            size="medium"
+            aria-label="see progress"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleProgress}
+            color="primary"
+            variant="contained"
+          >
+            <Typography
+              className="flex items-center w-20 justify-center"
+            >
+              Progress
+            </Typography>
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

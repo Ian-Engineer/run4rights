@@ -46,10 +46,10 @@ const Root = () => {
       {loading ? <LandingPage />
       :
       <>
-      <NavigationBar />
       <div className="flex-grow flex overflow-y-auto w-full justify-center m-auto">
         <Outlet />
       </div>
+      <NavigationBar />
       </>
       }
     </div>

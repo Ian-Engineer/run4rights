@@ -19,7 +19,11 @@ const HomePage = () => {
   return (
     <div className="max-w-full max-h-full flex flex-col">
       <div className="w-screen flex flex-col gap-4 items-center">
-        <div className='w-5/6 flex flex-col align-center mt-10 gap-8'>
+        <div className="text-center text-white">
+          <Typography variant="h1">Heading</Typography>
+          <Typography variant="h5">Information on what we are doing</Typography>
+        </div>
+        <div className='w-5/6 flex flex-col align-center mt-10'>
           {loading ? null : runnersList.map(runner => {
             return (
               <RunnerCard runner={runner} size={'xl'} key={runner.name}/>

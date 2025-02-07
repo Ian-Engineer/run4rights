@@ -3,7 +3,7 @@ import router from "./config/router";
 import { Provider } from "react-redux";
 import rootStore from "./config/store";
 import { ThemeProvider } from "@mui/material";
-import theme from "./config/theme";
+import theme from "./config/style/theme";
 import { useEffect } from "react";
 
 function App() {
@@ -34,7 +34,7 @@ useEffect(() => {
   return (
     <div
       className="max-h-screen max-w-screen w-screen h-screen font-extrabold flex flex-col"
-      style={{ background: theme.palette.primary.background }}
+      style={{ background: theme.palette.background.default }}
     >
       <ThemeProvider theme={theme}>
         <Provider store={rootStore}>
