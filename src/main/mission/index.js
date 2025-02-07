@@ -34,11 +34,7 @@ const MissionPage = () => {
           </Typography>
 
           <Typography variant="body2">
-            As donations increase, our mileage increases.
-          </Typography>
-
-          <Typography variant="body2">
-            Our mission is to raise money to provide legal counsel to those in the Aurora ICE detention center. 70% of immigrants detained at the GEO immigration detention center in Aurora, CO do not have a lawyer. Immigrants with legal representation are 3.5 times more likely to be released from detention on bond. Immigrants with legal representation are 10 times more likely to win their cases. 
+            We are running on February 8th 2pm in a loop around Civic Center Park in solidarity with the ani-ICE raid protest.
           </Typography>
 
           <Typography variant="body2">
@@ -57,6 +53,7 @@ const MissionPage = () => {
         Click here to contribute
       </Typography>
     </Button>
+    <img src="/donations_to_miles.png"/>
     </div>
   );
 };
