@@ -15,6 +15,9 @@ module.exports = {
       screen: 'calc(var(--vh) * 100)',
     }),
     extend: {
+      maxWidth: {
+        '312.5': '312.5px',
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-5deg)' },

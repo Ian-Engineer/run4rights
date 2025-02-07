@@ -36,8 +36,8 @@ const MissionPage = () => {
           </Typography>
 
           <Typography variant="body2">
-            <a href="https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/">
-              https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/ 
+            <a href="https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/" target="_blank">
+              Campaign for Universal Representation
             </a>
           </Typography>
         </div>

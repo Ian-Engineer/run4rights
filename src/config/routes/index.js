@@ -5,6 +5,7 @@ import HomeConfig from "./configs/HomeConfig";
 import ContactConfig from "./configs/ContactConfig";
 import NoRouteConfig from "./configs/NoRouteConfig";
 import MissionConfig from './configs/MissionConfig';
+import ProgressConfig from "./configs/ProgressConfig";
 
 const routes = {
   Root,
@@ -13,6 +14,7 @@ const routes = {
   ContactConfig,
   NoRouteConfig,
   MissionConfig,
+  ProgressConfig,
 };
 
 export default routes;

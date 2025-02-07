@@ -19,6 +19,11 @@ const navigationConfig = [
         element: <routes.MissionConfig />,
       },
       {
+        name: "Progress",
+        path: '/money-raised',
+        element: <routes.ProgressConfig />,
+      },
+      {
         name: "Contact Us",
         path: "/contact",
         element: <routes.ContactConfig />,
