@@ -2,12 +2,12 @@ const runners = [
     {
         name: 'Ian',
         image: 'ian.png',
-        description: 'It’s his birthday! Likes equal rights for everyone and Heather.',
+        description: 'It’s his birthday! HUGE fan of equal rights.',
     },
     {
         name: "Heather",
         image: 'heather.png',
-        description: "Would stop ice from coming into her school and will take her dog running."
+        description: "Would stop ICE from coming into her school and will take her dog running."
     },
     {
         name: 'Kevin',

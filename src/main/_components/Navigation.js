@@ -27,7 +27,7 @@ const NavigationBar = () => {
     <AppBar position="static">
       <Toolbar
         disableGutters
-        style={{ background: theme.palette.primary.mainGradient }}
+        style={{ background: theme.palette.dark_brown }}
         className="w-full m-0"
       >
         <Box
@@ -41,7 +41,7 @@ const NavigationBar = () => {
             aria-haspopup="true"
             onClick={handleRunners}
             color="primary"
-            variant="contained"
+            variant="text"
           >
             <Typography
               className="flex items-center w-20 justify-center"
@@ -56,7 +56,7 @@ const NavigationBar = () => {
             aria-haspopup="true"
             onClick={handleMission}
             color="primary"
-            variant="contained"
+            variant="text"
           >
             <Typography
               className="flex items-center w-20 justify-center"
@@ -71,7 +71,7 @@ const NavigationBar = () => {
             aria-haspopup="true"
             onClick={handleProgress}
             color="primary"
-            variant="contained"
+            variant="text"
           >
             <Typography
               className="flex items-center w-20 justify-center"

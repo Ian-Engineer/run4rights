@@ -12,17 +12,19 @@ const HomePage = () => {
 
   useEffect(() => {
     // make call to get runner data
-    setRunnersList(api.runnerData.runners)
+    setRunnersList(api.runnerData.runners.sort(() => Math.random() - 0.5))
     setLoading(false)
   }, []);
 
   return (
     <div className="max-w-full max-h-full flex flex-col">
       <div className="w-screen flex flex-col gap-4 items-center">
-        <div className='w-5/6 flex flex-col align-center mt-10 gap-8'>
+        <div className='w-5/6 flex flex-col align-center mt-8 mb-8 gap-8 snap-x'>
           {loading ? null : runnersList.map(runner => {
             return (
+              <div className="snap-center">
               <RunnerCard runner={runner} size={'xl'} key={runner.name}/>
+              </div>
             )
           })}
         </div>

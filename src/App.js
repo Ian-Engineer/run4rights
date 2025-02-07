@@ -34,7 +34,7 @@ useEffect(() => {
   return (
     <div
       className="max-h-screen max-w-screen w-screen h-screen font-extrabold flex flex-col"
-      style={{ background: theme.palette.background.default }}
+      style={{ background: 'white' }}
     >
       <ThemeProvider theme={theme}>
         <Provider store={rootStore}>

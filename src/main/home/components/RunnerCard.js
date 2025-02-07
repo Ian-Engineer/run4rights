@@ -48,12 +48,12 @@ const RunnerCard = ({runner, size = 'xl'}) => {
     const renderText = (runner, size) => {
         return (
             <>
-                <Typography className='text-left underline' variant={dimensions[size].header} color={'background.default'}>
+                <Typography className='text-left' fontWeight={'bold'} variant={dimensions[size].header} color={'background.default'}>
                     {runner.name}
                 </Typography>
                 <Box
                     sx={{
-                        color: theme.palette.primary.main
+                        color: theme.palette.dark_brown
                     }}
                     className='flex flex-row w-full gap-2 justify-around'
                 >
@@ -70,12 +70,12 @@ const RunnerCard = ({runner, size = 'xl'}) => {
             <>
                 <div className="w-2/5">
                     <img
-                        className="absolute" 
+                        // className="absolute" 
                         src={`/runners/${runner.image}`}
                         alt='u' 
                         style={{
-                            top: "-15px",
-                            transform: dimensions[size].imageTranslate, 
+                            // top: "-15px",
+                            // transform: dimensions[size].imageTranslate, 
                             height: dimensions[size].imageSize, 
                             width: dimensions[size].imageSize
                         }}
@@ -111,7 +111,7 @@ const RunnerCard = ({runner, size = 'xl'}) => {
         <Grow in={loaded} timeout={500}>
             <Box
                 sx={{
-                    backgroundColor: 'white',
+                    backgroundColor: theme.palette.beige,
                     padding: '5px',
                     borderRadius: `${theme.shape.borderRadius}px`,
                 }}

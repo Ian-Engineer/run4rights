@@ -2,9 +2,15 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
+    green: '#77721f',
+    beige: '#f5f5dc',
+    brown: '#773b15',
+    coral: '#ff6949',
+    dark_brown: '#3c2115',
+    off_white: '#FAF9F6',
     primary: {
-      main: '#000000',
-      text: "#EED595",
+      main: '#FAF9F6',
+      text: "#FAF9F6",
       disabled: 'grey',
     },
     secondary: {
@@ -12,12 +18,12 @@ const theme = createTheme({
       text: '#26263B'
     },
     background: {
-      default: '#26263B',
+      default: '#3c2115',
       darker: '#1C1C2D'
     },
     button: {
       main: "#D3D3D3",
-      contrastText: "#000000"
+      contrastText: "#000000",
     },
     error: {
       main: "#d32f2f"
@@ -52,7 +58,7 @@ const theme = createTheme({
     }
   },
   shape: {
-    borderRadius: 10,
+    borderRadius: 20,
   },
 });
 
