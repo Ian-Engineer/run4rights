@@ -9,12 +9,11 @@ import theme from "../../config/style/theme";
 import config from "../../config";
 
 const ProgressPage = () => {
-  const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(1100);
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
 
   useEffect(()=>{
-    // const socket = new WebSocket(config.development ? "ws://localhost:4000" : ""); // Change to your actual server URL
-    const socket = new WebSocket("ws://localhost:4000")
+    const socket = new WebSocket(config.development ? "ws://localhost:4000" : ""); // Change to your actual server URL
 
     socket.onmessage = (event) => {
         const total = JSON.parse(event.data).data;
