@@ -55,10 +55,13 @@ const RunnerCard = ({runner, size = 'xl'}) => {
                     sx={{
                         color: theme.palette.dark_brown
                     }}
-                    className='flex flex-row w-full gap-2 justify-around'
+                    className='flex flex-col w-full gap-2 justify-around'
                 >
                     <Typography variant={dimensions[size].body}>
                         {runner.description}
+                    </Typography>
+                    <Typography variant={dimensions[size].body} className="text-right">
+                        Mileage: {runner.mileage}
                     </Typography>
                 </Box>
             </>
