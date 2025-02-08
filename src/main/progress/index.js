@@ -4,10 +4,23 @@ import { setSearchText } from "./store";
 import SearchBar from "../_components/SearchBar";
 import RunnerCard from './components/RunnerCard'
 import api from "../../api";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Skeleton } from "@mui/material";
 import theme from "../../config/style/theme";
 
 const ProgressPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+
+  useEffect(()=>{
+    const socket = new WebSocket("ws://localhost:4000"); // Change to your actual server URL
+
+    socket.onmessage = (event) => {
+        const total = JSON.parse(event.data).data;
+        console.log(total)
+        setTotal(total)
+        setLoading(false)
+    };
+  },[])
 
   return (
     <div className="max-w-full max-h-full flex flex-col m-8 gap-4">
@@ -23,9 +36,14 @@ const ProgressPage = () => {
             Thanks to you, we've raised: 
           </Typography>
 
-          <Typography variant="body2">
-            Number of money
-          </Typography>
+          {
+            loading? 
+            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
+            :
+            <Typography variant="h1" className='text-center'>
+              ${total}
+            </Typography>
+          }
         </div>
       </Box>
     </div>

@@ -2,7 +2,7 @@ const runners = [
     {
         name: 'Ian',
         image: 'ian.png',
-        description: 'It’s his birthday! HUGE fan of equal rights.',
+        description: 'It was once his birthday... A HUGE fan of equal rights.',
     },
     {
         name: "Heather",
