@@ -10,7 +10,7 @@ import config from "../../config";
 
 const ProgressPage = () => {
   const [loading, setLoading] = useState(false);
-  const [total, setTotal] = useState(515);
+  const [total, setTotal] = useState(1100);
 
   useEffect(()=>{
     // const socket = new WebSocket(config.development ? "ws://localhost:4000" : ""); // Change to your actual server URL
