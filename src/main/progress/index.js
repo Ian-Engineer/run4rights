@@ -13,7 +13,7 @@ const ProgressPage = () => {
   const [total, setTotal] = useState(0);
 
   useEffect(()=>{
-    const socket = new WebSocket(config.development ? "ws://localhost:4000" : "ws://3.139.85.223:4000"); // Change to your actual server URL
+    const socket = new WebSocket(config.development ? "ws://localhost:4000" : "wss://3.139.85.223:4000"); // Change to your actual server URL
 
     socket.onmessage = (event) => {
         const total = JSON.parse(event.data).data;
