@@ -9,7 +9,7 @@ import theme from "../../config/style/theme";
 import config from "../../config";
 
 const ProgressPage = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(515);
 
   useEffect(()=>{
