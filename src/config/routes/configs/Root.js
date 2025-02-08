@@ -7,23 +7,7 @@ import { useDispatch } from "react-redux";
 import api from "../../../api";
 
 const Root = () => {
-  const [loading, setLoading] = useState(true)
-  const dispatch = useDispatch();
-
-  useEffect(()=>{
-    // load any initial data you need before the user loads the site
-    // including cookie authentication
-    api.getRequest('/api/cookieLogin')
-    .then(response=>{
-      if (!response.error) {
-        dispatch(setUser(response.data));
-      }
-      setLoading(false);
-    })
-    .catch(error => {
-      setLoading(false);
-    })
-  }, [])
+  const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
     // used to set the view height based on orientation of a mobile device

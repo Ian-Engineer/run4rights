@@ -21,6 +21,10 @@ const ProgressPage = () => {
         setTotal(total)
         setLoading(false)
     };
+
+    socket.onopen = () => {
+      console.log('connected')
+    }
   },[])
 
   return (
