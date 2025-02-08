@@ -9,16 +9,20 @@ import theme from "../../config/style/theme";
 import config from "../../config";
 
 const cant_figure_ws_out = true
+const totalDonations = 1965
+const currentMileage = 0
 
 const ProgressPage = () => {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
+  const [mileage, setMileage] = useState(0);
 
   useEffect(()=>{
     
     if (cant_figure_ws_out) {
-      setTotal(1965);
+      setTotal(totalDonations);
       setLoading(false);
+      setMileage(calculateMileage(totalDonations))
     } else {
       const socket = new WebSocket(config.development ? "ws://localhost:4000" : "wss://api.run4rights.com"); // Change to your actual server URL
   
@@ -35,6 +39,30 @@ const ProgressPage = () => {
 
     }
   },[])
+
+const calculateMileage = dollars => {
+  if (dollars < 50) {
+    return Math.floor(dollars / 5);
+  } else if (dollars < 150) {
+    return Math.floor((dollars - 50) / 10) + 10;
+  } else if (dollars < 300) {
+    return Math.floor((dollars - 150) / 15) + 20;
+  } else if (dollars < 500) {
+    return Math.floor((dollars - 300) / 20) + 30;
+  } else if (dollars < 750) {
+    return Math.floor((dollars - 500) / 25) + 40;
+  } else if (dollars < 1050) {
+    return Math.floor((dollars - 750) / 30) + 50;
+  } else if (dollars < 1400) {
+    return Math.floor((dollars - 1050) / 35) + 60;
+  } else if (dollars < 1850) {
+    return Math.floor((dollars - 1400) / 45) + 70;
+  } else if (dollars < 2400) {
+    return Math.floor((dollars - 1850) / 55) + 80;
+  } else {
+    return Math.floor((dollars - 2400) / 65) + 90
+  }
+};
 
   return (
     <div className="max-w-full max-h-full flex flex-col m-8 gap-4">
@@ -56,6 +84,52 @@ const ProgressPage = () => {
             :
             <Typography variant="h1" className='text-center'>
               ${total}
+            </Typography>
+          }
+        </div>
+      </Box>
+
+      <Box 
+        sx={{
+            backgroundColor: theme.palette.beige,
+            borderRadius: `${theme.shape.borderRadius}px`,
+        }}
+        className='p-2'
+      >
+        <div className="flex flex-col gap-4">
+          <Typography variant="h2" className="text-center">
+            Mileage Goal: 
+          </Typography>
+
+          {
+            loading? 
+            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
+            :
+            <Typography variant="h1" className='text-center'>
+              {mileage} miles
+            </Typography>
+          }
+        </div>
+      </Box>
+
+            <Box 
+        sx={{
+            backgroundColor: theme.palette.beige,
+            borderRadius: `${theme.shape.borderRadius}px`,
+        }}
+        className='p-2'
+      >
+        <div className="flex flex-col gap-4">
+          <Typography variant="h2" className="text-center">
+            Current Mileage: 
+          </Typography>
+
+          {
+            loading? 
+            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
+            :
+            <Typography variant="h1" className='text-center'>
+              {currentMileage} miles
             </Typography>
           }
         </div>
