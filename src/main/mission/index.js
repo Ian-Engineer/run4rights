@@ -34,7 +34,7 @@ const MissionPage = () => {
           </Typography>
 
           <Typography variant="body2">
-            We are running on February 8th 2pm in a loop around Civic Center Park in solidarity with the ani-ICE raid protest.
+            We are running on February 8th 2pm in a loop around Civic Center Park in solidarity with the anti-ICE raid protest.
           </Typography>
 
           <Typography variant="body2">
