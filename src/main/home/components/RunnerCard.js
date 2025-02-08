@@ -60,7 +60,7 @@ const RunnerCard = ({runner, size = 'xl'}) => {
                     <Typography variant={dimensions[size].body}>
                         {runner.description}
                     </Typography>
-                    <Typography variant={dimensions[size].body} className="text-right">
+                    <Typography variant={dimensions[size].body} fontWeight={'bold'} className="text-right">
                         Mileage: {runner.mileage}
                     </Typography>
                 </Box>

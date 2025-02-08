@@ -8,36 +8,28 @@ import { Box, Button, Typography, Skeleton } from "@mui/material";
 import theme from "../../config/style/theme";
 import config from "../../config";
 
-const cant_figure_ws_out = true
-const totalDonations = 1965
-const currentMileage = 0
-
 const ProgressPage = () => {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
   const [mileage, setMileage] = useState(0);
+  const [currentMileage, setCurrentMileage] = useState(0);
 
   useEffect(()=>{
-    
-    if (cant_figure_ws_out) {
-      setTotal(totalDonations);
-      setLoading(false);
-      setMileage(calculateMileage(totalDonations))
-    } else {
-      const socket = new WebSocket(config.development ? "ws://localhost:4000" : "wss://api.run4rights.com"); // Change to your actual server URL
-  
-      socket.onmessage = (event) => {
-          const total = JSON.parse(event.data).data;
-          console.log(total)
-          setTotal(total)
-          setLoading(false)
-      };
-  
-      socket.onopen = () => {
-        console.log('connected')
-      }
 
-    }
+    fetch("https://lhecgihqf43th4rstngwaprc7a0zdubd.lambda-url.us-east-2.on.aws/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        setTotal(data.totalDonations)
+        setMileage(calculateMileage(data.totalDonations))
+        setCurrentMileage(data.runners.reduce((sum, runner) => sum + runner.mileage, 0))
+        setLoading(false)
+      })
+      .catch(error => console.error("Error connecting to Lambda:", error));
   },[])
 
 const calculateMileage = dollars => {

@@ -12,8 +12,15 @@ const HomePage = () => {
 
   useEffect(() => {
     // make call to get runner data
-    setRunnersList(api.runnerData.runners.sort(() => Math.random() - 0.5))
-    setLoading(false)
+    fetch("https://lhecgihqf43th4rstngwaprc7a0zdubd.lambda-url.us-east-2.on.aws/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {setRunnersList(data.runners.sort(() => Math.random() - 0.5)); setLoading(false)})
+      .catch(error => console.error("Error connecting to Lambda:", error));
   }, []);
 
   return (
@@ -22,8 +29,8 @@ const HomePage = () => {
         <div className='w-5/6 flex flex-col align-center mt-8 mb-8 gap-8 snap-x items-center'>
           {loading ? null : runnersList.map(runner => {
             return (
-              <div className="snap-center max-w-312.5">
-              <RunnerCard runner={runner} size={'xl'} key={runner.name}/>
+              <div className="snap-center max-w-312.5" key={runner.name}>
+              <RunnerCard runner={runner} size={'xl'} />
               </div>
             )
           })}
