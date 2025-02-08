@@ -17,7 +17,7 @@ const ProgressPage = () => {
   useEffect(()=>{
     
     if (cant_figure_ws_out) {
-      setTotal(1685);
+      setTotal(1965);
       setLoading(false);
     } else {
       const socket = new WebSocket(config.development ? "ws://localhost:4000" : "wss://api.run4rights.com"); // Change to your actual server URL
