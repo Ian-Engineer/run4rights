@@ -13,9 +13,9 @@ const MissionPage = () => {
 
   const handleContribute = () => {
     if (config.development) {
-      window.open('https://buy.stripe.com/test_eVa1830p14BVa9q6oo',  "_blank")
+      window.open('https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/',  "_blank")
     } else {
-      window.open('https://buy.stripe.com/8wM6pg0D52geaiI7ss',  "_blank")
+      window.open('https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/',  "_blank")
     }
   }
 
