@@ -31,7 +31,7 @@ const ProgressPage = () => {
                 We had an amazing turn out at the protest today, February 8th! We managed to raise $3,016 during the event, which amounted to 99 miles! Collectively, we ran 100. After the event, a few others donated and the total came out to $3,146. We are very excited to present CIRC with this large sum!
               </Typography>
             </Box>
-            <img src="/event.jpeg"/>
+            <img src="/event.png"/>
           </div>
         : 
           null
