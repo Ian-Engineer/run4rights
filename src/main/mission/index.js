@@ -13,9 +13,9 @@ const MissionPage = () => {
 
   const handleContribute = () => {
     if (config.development) {
-      window.open('https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/',  "_blank")
+      window.open('https://coloradoimmigrant.app.neoncrm.com/forms/donate',  "_blank")
     } else {
-      window.open('https://coloradoimmigrant.org/our-work/campaign-for-universal-representation/',  "_blank")
+      window.open('https://coloradoimmigrant.app.neoncrm.com/forms/donate',  "_blank")
     }
   }
 
@@ -39,6 +39,10 @@ const MissionPage = () => {
 
           <Typography variant="body2">
             ALL donations go to the Colorado Immigrant Rights Coalition Legal Defense Fund. 
+          </Typography>
+
+          <Typography variant="body2">
+            Our event is over, but the issues still exist. Please consider donating to CIRC with the link below.
           </Typography>
 
           <Typography variant="body2">

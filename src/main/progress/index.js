@@ -8,77 +8,52 @@ import { Box, Button, Typography, Skeleton } from "@mui/material";
 import theme from "../../config/style/theme";
 import config from "../../config";
 
+const eventOver = true
+
 const ProgressPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [total, setTotal] = useState(0);
-  const [mileage, setMileage] = useState(0);
-  const [currentMileage, setCurrentMileage] = useState(0);
-
-  useEffect(()=>{
-
-    fetch("https://lhecgihqf43th4rstngwaprc7a0zdubd.lambda-url.us-east-2.on.aws/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        setTotal(data.totalDonations)
-        setMileage(calculateMileage(data.totalDonations))
-        setCurrentMileage(data.runners.reduce((sum, runner) => sum + runner.mileage, 0))
-        setLoading(false)
-      })
-      .catch(error => console.error("Error connecting to Lambda:", error));
-  },[])
-
-const calculateMileage = dollars => {
-  if (dollars < 50) {
-    return Math.floor(dollars / 5);
-  } else if (dollars < 150) {
-    return Math.floor((dollars - 50) / 10) + 10;
-  } else if (dollars < 300) {
-    return Math.floor((dollars - 150) / 15) + 20;
-  } else if (dollars < 500) {
-    return Math.floor((dollars - 300) / 20) + 30;
-  } else if (dollars < 750) {
-    return Math.floor((dollars - 500) / 25) + 40;
-  } else if (dollars < 1050) {
-    return Math.floor((dollars - 750) / 30) + 50;
-  } else if (dollars < 1400) {
-    return Math.floor((dollars - 1050) / 35) + 60;
-  } else if (dollars < 1850) {
-    return Math.floor((dollars - 1400) / 45) + 70;
-  } else if (dollars < 2400) {
-    return Math.floor((dollars - 1850) / 55) + 80;
-  } else {
-    return Math.floor((dollars - 2400) / 65) + 90
-  }
-};
 
   return (
     <div className="max-w-full max-h-full flex flex-col m-8 gap-4">
-      <Box 
-        sx={{
-            backgroundColor: theme.palette.beige,
-            borderRadius: `${theme.shape.borderRadius}px`,
-        }}
-        className='p-2'
-      >
-        <div className="flex flex-col gap-4">
-          <Typography variant="h2" className="text-center">
-            Thanks to you, we've raised: 
-          </Typography>
+        {eventOver ? 
+        <div className="flex flex-col gap-2">
+            <Box 
+              sx={{
+                  backgroundColor: theme.palette.beige,
+                  borderRadius: `${theme.shape.borderRadius}px`,
+              }}
+              className='p-2'
+            >
+              <Typography variant="h2" className="text-center">
+                Thank you!!
+              </Typography>
 
-          {
-            loading? 
-            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
-            :
-            <Typography variant="h1" className='text-center'>
-              ${total}
+              <Typography variant="body2">
+                We had an amazing turn out at the protest today, February 8th! We managed to raise $3,016 during the event, which amounted to 99 miles! Collectively, we ran 100. After the event, a few others donated and the total came out to $3,146. We are very excited to present CIRC with this large sum!
+              </Typography>
+            </Box>
+            <img src="/event.jpeg"/>
+          </div>
+        : 
+          null
+        }
+
+        <Box 
+          sx={{
+              backgroundColor: theme.palette.beige,
+              borderRadius: `${theme.shape.borderRadius}px`,
+          }}
+          className='p-2'
+        >
+          <div className="flex flex-col gap-4">
+            <Typography variant="h2" className="text-center">
+              Thanks to you, we've raised: 
             </Typography>
-          }
-        </div>
+
+            <Typography variant="h1" className='text-center'>
+              $3,146
+            </Typography>
+          </div>
+
       </Box>
 
       <Box 
@@ -93,18 +68,14 @@ const calculateMileage = dollars => {
             Mileage Goal: 
           </Typography>
 
-          {
-            loading? 
-            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
-            :
-            <Typography variant="h1" className='text-center'>
-              {mileage} miles
-            </Typography>
-          }
+          <Typography variant="h1" className='text-center'>
+            99 miles
+          </Typography>
         </div>
       </Box>
 
-            <Box 
+        <div className="pb-8">
+      <Box 
         sx={{
             backgroundColor: theme.palette.beige,
             borderRadius: `${theme.shape.borderRadius}px`,
@@ -113,19 +84,15 @@ const calculateMileage = dollars => {
       >
         <div className="flex flex-col gap-4">
           <Typography variant="h2" className="text-center">
-            Current Mileage: 
+            Ending Mileage: 
           </Typography>
 
-          {
-            loading? 
-            <Skeleton variant="text" sx={{ fontSize: '2.5rem' }} className="p0 m0"/> 
-            :
-            <Typography variant="h1" className='text-center'>
-              {currentMileage} miles
-            </Typography>
-          }
+          <Typography variant="h1" className='text-center'>
+            100 miles
+          </Typography>
         </div>
       </Box>
+      </div>
     </div>
   );
 };

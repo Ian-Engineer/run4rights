@@ -12,15 +12,58 @@ const HomePage = () => {
 
   useEffect(() => {
     // make call to get runner data
-    fetch("https://lhecgihqf43th4rstngwaprc7a0zdubd.lambda-url.us-east-2.on.aws/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(response => response.json())
-      .then(data => {setRunnersList(data.runners.sort(() => Math.random() - 0.5)); setLoading(false)})
-      .catch(error => console.error("Error connecting to Lambda:", error));
+    const runnerData = [
+        {
+            name: 'Ian',
+            image: 'ian.png',
+            description: 'It was once his birthday... A HUGE fan of equal rights.',
+            mileage: 17,
+        },
+        {
+            name: "Heather",
+            image: 'heather.png',
+            description: "Would stop ICE from coming into her school and will take her dog running.",
+            mileage: 18,
+        },
+        {
+            name: 'Kevin',
+            image: 'kevin.png',
+            description: 'Is a vaccine advocate running/skiing/biking advocate and is blonde.',
+            mileage: 22,
+        },
+        {
+            name: 'Nico',
+            image: 'nico.png',
+            description: 'Is rooting for global warming to melt the ICE.',
+            mileage: 10,
+        },
+        {
+            name: 'Lauren',
+            image: 'lauren.png',
+            description: 'Has good ideas and is bad at running.',
+            mileage: 10,
+        },
+        {
+            name: 'Carson',
+            image: 'carson.png',
+            description: 'Loves to yell about rights and loves to yell about abortion.',
+            mileage: 15,
+        },
+        {
+            name: 'Lindsey',
+            image: 'lindsey.png',
+            description: 'Is pro LGTBQ+ rights and is going to brunch after this.',
+            mileage: 3,
+        },
+        {
+            name: "Guests",
+            image: 'guest.png',
+            description: 'Friends that join us in the day to contribute!',
+            mileage: 5
+        }
+    ]
+    setRunnersList(runnerData.sort(() => Math.random() - 0.5)); 
+    setLoading(false)
   }, []);
 
   return (
